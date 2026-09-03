@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { Home, Search, Mail, FlaskConical, Menu, X } from "lucide-react";
+import { Home, Compass, Mail, FlaskConical, Menu, X } from "lucide-react";
 
 const navItems = [
   { icon: Home, label: "Home", href: "/" },
-  { icon: Search, label: "Search", href: "#search" },
+  { icon: Compass, label: "Search", href: "#search" },
   { icon: Mail, label: "Email", href: "#messages" },
   { icon: FlaskConical, label: "Lab", href: "#lab" },
 ];
