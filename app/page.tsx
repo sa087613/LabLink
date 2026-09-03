@@ -9,7 +9,7 @@ export default function Home() {
   const [introDone, setIntroDone] = useState(false);
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center font-sans bg-linear-to-r from-[#051E39] to-[#000000]">
+    <div className="flex flex-col flex-1 items-center justify-center font-sans bg-linear-to-r from-[#8F713D] to-[#B39051]">
       <span>
         <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet"></link>
       </span>

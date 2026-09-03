@@ -62,7 +62,7 @@ export function IntroOverlay({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-linear-to-r from-[#051E39] to-[#000000]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-linear-to-r from-[#8F713D] to-[#B39051]"
     >
       {/* loads the custom display font used for the intro text */}
       <span>
