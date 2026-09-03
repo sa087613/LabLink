@@ -13,7 +13,7 @@ export default function Home() {
       <span>
         <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet"></link>
       </span>
-      <IntroOverlay text="LABLINK" onComplete={() => setIntroDone(true)} />
+      <IntroOverlay onComplete={() => setIntroDone(true)} />
       {introDone && <AtlClock />}
       {introDone && <ProfileBadge />}
       {introDone && <Navbar />}

@@ -3,60 +3,84 @@ import React, { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
 
 export function IntroOverlay({
-  text = "LabLink",
-  onComplete, // called so the page can reveal itself
+  onComplete,
 }: {
-  text?: string;
   onComplete?: () => void;
 }) {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<SVGTextElement>(null); // to measure and animate its stroke
-
-  const [fontReady, setFontReady] = useState(false);
+  const logoWrapperRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
+  const [logoVersion, setLogoVersion] = useState(0); // bumps each time fresh paths are injected
 
-  // load the custom font before we try to measure/animate text
   useEffect(() => {
-    document.fonts.load('160px "Matemasie"').then(() => {
-      document.fonts.ready.then(() => setFontReady(true));
-    });
+    let ignore = false; // guards against a stale/duplicate fetch resolving late
+
+    fetch("/gt-logo.svg")
+      .then((res) => res.text())
+      .then((svgText) => {
+        if (ignore || !logoWrapperRef.current) return;
+        logoWrapperRef.current.innerHTML = svgText;
+        setLogoVersion((v) => v + 1); // always triggers the draw effect, even if it ran before
+      });
+
+    return () => {
+      ignore = true; // if this effect re-runs (Strict Mode), the old fetch's result is discarded
+    };
   }, []);
 
-  // draw the text in, then fade the whole overlay away
   useEffect(() => {
-    const textEl = textRef.current;
     const overlayEl = overlayRef.current;
+    const wrapperEl = logoWrapperRef.current;
+    if (logoVersion === 0 || !overlayEl || !wrapperEl) return;
 
-    if (!fontReady || !textEl || !overlayEl) return;
+    const paths = Array.from(wrapperEl.querySelectorAll("path"));
+    if (paths.length === 0) return;
 
-    const length = textEl.getComputedTextLength();
-
-    // set up the "invisible dash the exact length of the text" trick:
-    // one dash equal to the full text length, offset so none of it shows yet
-    textEl.style.strokeDasharray = `${length}`;
-    textEl.style.strokeDashoffset = `${length}`;
-
-    // animate the dash offset back to 0, which reveals the stroke (left to right, like it's being handwritten)
-    animate(textEl, {
-      strokeDashoffset: [length, 0],
-      duration: 3000,
-      ease: "inOutQuad",
-      onComplete: () => {
-        animate(overlayEl, {
-          opacity: [1, 0],
-          duration: 600,
-          delay: 300,
-          ease: "outExpo",
-          onComplete: () => {
-            setVisible(false);  
-            onComplete?.();     
-          },
-        });
-      },
+    paths.forEach((p) => {
+      p.style.fill = "none";
+      p.style.stroke = "white";
+      p.style.strokeWidth = "1.5";
     });
-  }, [fontReady, onComplete]);
 
-  // once faded out, render nothing — the overlay is gone for good
+    const lengths = paths.map((p) => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = `${len}`;
+      p.style.strokeDashoffset = `${len}`;
+      return len;
+    });
+
+    let completedCount = 0;
+    paths.forEach((p, i) => {
+      animate(p, {
+        strokeDashoffset: [lengths[i], 0],
+        duration: 2000,
+        delay: i * 20,
+        ease: "inOutQuad",
+        onComplete: () => {
+          completedCount++;
+          if (completedCount === paths.length) {
+            animate(paths, {
+              fill: ["transparent", "#0a1f38"],
+              duration: 400,
+              onComplete: () => {
+                animate(overlayEl, {
+                  opacity: [1, 0],
+                  duration: 600,
+                  delay: 300,
+                  ease: "outExpo",
+                  onComplete: () => {
+                    setVisible(false);
+                    onComplete?.();
+                  },
+                });
+              },
+            });
+          }
+        },
+      });
+    });
+  }, [logoVersion, onComplete]);
+
   if (!visible) return null;
 
   return (
@@ -64,29 +88,7 @@ export function IntroOverlay({
       ref={overlayRef}
       className="fixed inset-0 z-50 flex items-center justify-center bg-linear-to-r from-[#8F713D] to-[#B39051]"
     >
-      {/* loads the custom display font used for the intro text */}
-      <span>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap"
-          rel="stylesheet"
-        />
-      </span>
-
-      <svg viewBox="0 0 800 200" className="w-full max-w-xl">
-        <text
-          ref={textRef}
-          x="20"
-          y="140"
-          fontFamily="Matemasie"
-          fontSize="160"
-          fill="none"       
-          stroke="white"
-          strokeWidth="2"
-          style={{ visibility: fontReady ? "visible" : "hidden" }}
-        >
-          {text}
-        </text>
-      </svg>
+      <div ref={logoWrapperRef} className="w-full max-w-2xl px-8" />
     </div>
   );
 }
