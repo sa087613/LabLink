@@ -20,7 +20,7 @@ export function Navbar() {
           className="pl-2 pr-1 text-lg font-semibold tracking-tight text-white"
           style={{ fontFamily: "'Matemasie', serif" }}
         >
-          LabLink
+          LABLINK
         </span>
 
         {/* Desktop links */}
