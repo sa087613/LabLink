@@ -64,8 +64,8 @@ export function IntroChrome() {
       >
         <div className="flex w-full items-center justify-between gap-4">
           <span
-            className="pl-2 pr-1 text-lg font-semibold tracking-tight text-white"
-            style={{ fontFamily: "'Matemasie', serif" }}
+            className="pl-2 pr-1 text-lg font-semibold italic tracking-tight text-white"
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
             LabLink
           </span>

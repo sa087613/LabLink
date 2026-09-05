@@ -26,10 +26,14 @@ export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center font-sans bg-linear-to-r from-[#8F713D] to-[#B39051]">
       <span>
-        <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"></link>
       </span>
       <IntroOverlay onComplete={() => setIntroDone(true)} />
       {introDone && <IntroChrome />} {/*Might delay but once you put everything else in, it wont*/}
+      {/* hero */}
+      <p className="font-mono-ui text-xs tracking-[0.25em] text-foreground/70">
+        ATLANTA, GA — 33.7756°N 84.3963°W
+      </p>
 
       {/* hero
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-4 pt-24 text-center md:pt-52">
