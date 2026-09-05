@@ -28,11 +28,10 @@ export default function Home() {
       <span>
         <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet"></link>
       </span>
-
       <IntroOverlay onComplete={() => setIntroDone(true)} />
-      {introDone && <IntroChrome />}
+      {introDone && <IntroChrome />} {/*Might delay but once you put everything else in, it wont*/}
 
-      {/* hero */}
+      {/* hero
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-4 pt-24 text-center md:pt-52">
         <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-md md:text-6xl lg:text-7xl">
           Find your lab <br className="hidden md:block" /> in seconds
@@ -58,30 +57,29 @@ export default function Home() {
           Built for GT students &middot; Free to use
         </p>
       </div>
+      */}
 
-
-      {/* dashboard image */}
+      {/* dashboard image (CHANGE ONCE DASHBOARD IS DONE) 
       <div className="relative z-10 mx-auto mt-12 w-full max-w-6xl px-4 pb-4 md:mt-16 md:px-8">
         <div className="rounded-2xl border border-white/30 bg-white/20 p-2 shadow-2xl backdrop-blur-md md:rounded-[2rem] md:p-3">
           <img
-            src="https://assets.aceternity.com/screenshots/fintech-dashboard.webp"
-            alt="Altitude fintech dashboard"
+            src="/Lablink1.png"
+            alt="LabLink dashboard"
             className="w-full rounded-xl border border-black/5 shadow-lg md:rounded-3xl"
           />
         </div>
       </div>
+      */}
 
-      {/* dashboard image */}
+      {/* CTA Section 
       <div className="relative z-10 mx-auto mt-12 w-full max-w-6xl px-4 pb-4 md:mt-16 md:px-44">
-        <div className="rounded-2xl border border-white/30 bg-white/20 p-2 shadow-2xl backdrop-blur-md md:rounded-[2rem] md:p-3">
-          {/* flip board */}
+        <div className="rounded-2xl border border-blue-950/30 bg-blue-950/20 p-2 shadow-2xl backdrop-blur-md md:rounded-[2rem] md:p-3">
           {introDone && (
             <TextFlippingBoard text={MESSAGES[msgIdx]} watermark="" stagger={false} />
           )}
         </div>
       </div>
-
-      
+      */}
     </div>
   );
 }
