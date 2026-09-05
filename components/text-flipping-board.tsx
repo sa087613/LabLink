@@ -1,5 +1,5 @@
+//FIX MOBILE APPLICATION - TAKES UP
 "use client";
-
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";

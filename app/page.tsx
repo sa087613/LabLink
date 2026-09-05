@@ -6,6 +6,7 @@ import { IntroOverlay } from "@/components/intro-overlay";
 
 const MESSAGES: string[] = [
   "UPLOAD YOUR RESUME \n GET MATCHED WITH GT LABS \nIN SECONDS",
+  "THE FIRST AI \n MATCHING \n STUDENTS TO LABS",
 ];
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
       </span>
       <IntroOverlay onComplete={() => setIntroDone(true)} />
       {introDone && <IntroChrome />}
+      {/*IF WANTING TO PUT WORDS IN BACKGROUND PUT IN WATERMARK*/}
       {introDone && (
         <TextFlippingBoard text={MESSAGES[msgIdx]} watermark="" stagger={false} />
       )}
