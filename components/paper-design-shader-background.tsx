@@ -16,7 +16,7 @@ export function GradientBackground() {
         scale={1}
         rotation={0}
         speed={1}
-        colors={["hsl(14, 100%, 57%)", "hsl(45, 100%, 51%)", "hsl(340, 82%, 52%)"]}
+        colors={["#B3A369", "#8F713D", "#051E39"]}
       />
     </div>
   )

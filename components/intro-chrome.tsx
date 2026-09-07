@@ -48,7 +48,7 @@ export function IntroChrome() {
         <motion.div
           variants={itemVariants}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed top-6 left-6 z-50 hidden sm:flex items-center gap-2 rounded-full border px-4 py-2 shadow-lg backdrop-blur-xl backdrop-saturate-150 border-white/10 bg-black/20"
+          className="fixed top-6 left-6 z-50 hidden sm:flex items-center gap-2 rounded-full border px-4 py-2 shadow-lg backdrop-blur-xl backdrop-saturate-150 border-[#B39051] bg-black/20"
         >
           <span className="text-sm font-medium tracking-tight text-white tabular-nums">
             {time}
@@ -60,11 +60,11 @@ export function IntroChrome() {
       <motion.nav
         variants={itemVariants}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center rounded-3xl border px-4 py-2 shadow-lg backdrop-blur-xl backdrop-saturate-150 border-white/10 bg-black/20 transition-all"
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center rounded-3xl border px-4 py-2 shadow-lg backdrop-blur-xl backdrop-saturate-150 border-[#B39051] bg-black/20 transition-all"
       >
         <div className="flex w-full items-center justify-between gap-4">
           <span
-            className="pl-2 pr-1 text-lg font-semibold italic tracking-tight text-white"
+            className="pl-2 pr-1 text-lg font-semibold italic tracking-tight text-[#B39051]"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             LabLink
@@ -76,7 +76,7 @@ export function IntroChrome() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full transition-colors bg-white/10 text-white hover:bg-white/20"
+                className="flex h-10 w-10 items-center justify-center rounded-full transition-colors bg-[#B39051] text-[#051E39]"
               >
                 <Icon size={18} strokeWidth={1.75} />
               </Link>
@@ -86,21 +86,21 @@ export function IntroChrome() {
           <button
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex sm:hidden h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="flex sm:hidden h-10 w-10 items-center justify-center rounded-full bg-[#B39051] text-[#051E39] transition-colors"
           >
             {open ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
           </button>
         </div>
 
         {open && (
-          <div className="flex sm:hidden items-center justify-center gap-2 w-full mt-2 pt-2 border-t border-white/10">
+          <div className="flex sm:hidden items-center justify-center gap-2 w-full mt-2 pt-2 border-t border-[#B39051]">
             {navItems.map(({ icon: Icon, label, href }) => (
               <Link
                 key={label}
                 href={href}
                 aria-label={label}
                 onClick={() => setOpen(false)}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#B39051] text-[#051E39] transition-colors "
               >
                 <Icon size={18} strokeWidth={1.75} />
               </Link>
@@ -113,7 +113,7 @@ export function IntroChrome() {
         variants={itemVariants}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         aria-label="Profile"
-        className="fixed top-6 right-6 z-50 h-11 w-11 overflow-hidden rounded-full border shadow-lg backdrop-blur-xl backdrop-saturate-150 border-white/10 bg-black/20 transition-colors hover:bg-white/20"
+        className="fixed top-6 right-6 z-50 h-11 w-11 overflow-hidden rounded-full border shadow-lg backdrop-blur-xl backdrop-saturate-150 border-[#B39051] bg-black/20 transition-colors hover:bg-white/20"
       >
         <Image
           src="/profile.jpg"

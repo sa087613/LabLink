@@ -4,7 +4,7 @@ import { TextFlippingBoard } from "@/components/text-flipping-board";
 import { IntroChrome } from "@/components/intro-chrome";
 import { IntroOverlay } from "@/components/intro-overlay";
 import { GradientBackground } from "@/components/paper-design-shader-background"
-
+import { FileUp, Sparkles, Handshake } from "lucide-react";
 
 const MESSAGES: string[] = [
   "UPLOAD YOUR RESUME \n GET MATCHED WITH GT LABS \nIN SECONDS",
@@ -17,6 +17,25 @@ const FRAMEWORKS = [
   { name: "Tailwind CSS", src: "/logos/tailwindCSS.svg" }, //FIND THE WHITE VERSION
   { name: "Typscript", src: "/logos/typescript.svg" }, //FIND THE WHITE VERSION
 ];
+
+const STEPS = [
+  {
+    icon: FileUp,
+    title: "Upload Your Resume",
+    description: "Drop in your resume, no extra forms needed.",
+  },
+  {
+    icon: Sparkles,
+    title: "Get Matched",
+    description: "Our AI matches you with labs that fit your skills.",
+  },
+  {
+    icon: Handshake,
+    title: "Connect with the Lab",
+    description: "Reach out to the PI and take the next step.",
+  },
+];
+
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -43,7 +62,7 @@ export default function Home() {
       {/*HERO*/}
       <section className="relative w-full flex items-center justify-center pt-24 py-4">
         <div className="relative w-[90%] max-w-5xl min-h-[500px] md:aspect-video md:min-h-0 overflow-hidden">
-          <div className="absolute inset-0 border-2 border-dashed border-white/50 overflow-hidden z-0">
+          <div className="absolute inset-0 border-2 border-dashed border-[#B39051] overflow-hidden z-0">
             <GradientBackground />
           </div>
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 md:gap-6 z-10 px-4 md:px-6 py-8 text-center">
@@ -58,7 +77,7 @@ export default function Home() {
             </p>
             <button
               type="button"
-              className="rounded-full bg-white text-black text-sm px-4 py-2 md:px-2 md:py-0.5 font-mono hover:bg-white/90 transition-colors"
+              className="rounded-full bg-[#B39051] text-[#051E39] text-sm px-4 py-2 md:px-2 md:py-0.5 font-mono hover:bg-white/90 transition-colors"
             >
               UPLOAD RESUME →
             </button>
@@ -66,10 +85,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/*MADE WITH SECTION*/}
+      {/*MADE WITH*/}
       <section className="relative w-full flex items-center justify-center py-4">
-        <div className="relative w-[90%] max-w-5xl overflow-hidden border-2 border-dashed border-white/50 bg-black py-6">
-          <p className="text-white/60 text-center text-sm font-mono tracking-widest uppercase mb-10">
+        <div className="relative w-[90%] max-w-5xl overflow-hidden border-2 border-dashed border-[#B39051] bg-black py-6">
+          <p className="text-white/60 text-center text-sm tracking-widest uppercase mb-10">
             Constructed with these frameworks
           </p>
           <div className="relative flex overflow-hidden">
@@ -86,6 +105,41 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/*HOW IT WORKS*/}
+      <section className="relative w-full flex items-center justify-center py-4">
+      <div className="relative w-[90%] max-w-5xl border-2 border-dashed border-[#B39051]">
+        <div className="border-b-2 border-dashed border-[#B39051] py-6 px-6 text-center">
+          <h1
+            className="text-white text-xl md:text-3xl italic font-bold leading-tight"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            How it works, in 3 simple steps.
+          </h1>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {STEPS.map((step, i) => (
+            <div
+              key={i}
+              className={`flex flex-col items-center gap- px-8 py-2 text-center ${
+                i > 0 ? "md:border-l-2 md:border-dashed md:border-[#B39051]" : ""
+              }`}
+            >
+              <div className="flex flex-col items-center gap-4 px-8 py-8 text-center">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-white/10">
+                  <step.icon className="h-5 w-5 text-white" />
+                </div>
+                <div className="flex flex-col gap-1">
+                <h3 className="text-white font-semibold text-md">{step.title}</h3>
+                <p className="text-white/50 text-sm">{step.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/*IF WANTING TO PUT WORDS IN BACKGROUND PUT IN WATERMARK
       {introDone && (
