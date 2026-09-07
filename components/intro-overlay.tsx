@@ -86,7 +86,8 @@ export function IntroOverlay({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-linear-to-r from-[#8F713D] to-[#B39051]"
+      //IF YOU WANT TO CHANGE BACKGROUND MAKE IT bg-linear-to-r from-[#8F713D] to-[#B39051]
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black"
     >
       <div ref={logoWrapperRef} className="w-full max-w-2xl px-8" />
     </div>
