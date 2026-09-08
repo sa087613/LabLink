@@ -5,9 +5,7 @@ import { IntroChrome } from "@/components/intro-chrome";
 import { IntroOverlay } from "@/components/intro-overlay";
 import { CardBody, CardContainer, CardItem } from "@/components/3d-card";
 import { GradientBackground } from "@/components/paper-design-shader-background"
-import { FileUp, Sparkles, Handshake } from "lucide-react";
-import { Check } from "lucide-react";
-import { Plus } from "lucide-react";
+import { FileUp, Sparkles, Handshake, Check, Plus } from "lucide-react";
 import { PaperDesignBackground } from "@/components/neon-dither"
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 
@@ -373,7 +371,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </footer>
+      </footer>
 
       {/*MADE WITH
       <section className="relative w-full flex items-center justify-center py-4">
