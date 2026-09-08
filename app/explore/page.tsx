@@ -32,7 +32,7 @@ interface Lab {
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
-  const departments = ['All', 'Computer Science', 'Chemical Engineering', 'Biomedical Engineering', "Industrial Engineering", "Aerospace Engineering"];
+  const departments = ['All', 'Computer Science', 'Chemical Engineering', 'Biomedical Engineering', "Industrial Engineering", "Aerospace Engineering", "Mechanical Engineering", ];
   const labs: Lab[] = [
     {
       id: 1,
