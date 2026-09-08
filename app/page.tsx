@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { TextFlippingBoard } from "@/components/text-flipping-board";
 import { IntroChrome } from "@/components/intro-chrome";
 import { IntroOverlay } from "@/components/intro-overlay";
+import { CardBody, CardContainer, CardItem } from "@/components/3d-card";
 import { GradientBackground } from "@/components/paper-design-shader-background"
 import { FileUp, Sparkles, Handshake } from "lucide-react";
 import { Check } from "lucide-react";
