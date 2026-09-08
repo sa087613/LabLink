@@ -1,5 +1,45 @@
+"use client";
+import React, { useState, useEffect, useCallback } from "react";
+import { TextFlippingBoard } from "@/components/text-flipping-board";
+import { IntroChrome } from "@/components/intro-chrome";
+import { IntroOverlay } from "@/components/intro-overlay";
+import { GradientBackground } from "@/components/paper-design-shader-background"
+import { FileUp, Sparkles, Handshake } from "lucide-react";
+import { Check } from "lucide-react";
 
-\{
+const FEATURES = [
+  "AI-powered resume matching",
+  "Skill and coursework analysis",
+  "Real-time lab openings",
+  "Match score for every lab",
+  "Direct PI contact info",
+  "Built exclusively for GT students",
+];
+
+const FRAMEWORKS = [
+  { name: "Next.js", src: "/logos/next.svg" },
+  { name: "Vercel", src: "/logos/vercel.svg" },
+  { name: "OpenAI", src: "/logos/openAI.svg" }, //FIND THE BIGGER VERSION
+  { name: "Tailwind CSS", src: "/logos/tailwindCSS.svg" }, //FIND THE WHITE VERSION
+  { name: "Typscript", src: "/logos/typescript.svg" }, //FIND THE WHITE VERSION
+];
+
+const MESSAGES: string[] = [
+  "UPLOAD YOUR RESUME \n GET MATCHED WITH GT LABS \nIN SECONDS",
+];
+
+const STEPS = [
+  {
+    icon: FileUp,
+    title: "Upload Your Resume",
+    description: "Drop in your resume, no extra forms needed.",
+  },
+  {
+    icon: Sparkles,
+    title: "Get Matched",
+    description: "Our AI matches you with labs that fit your skills.",
+  },
+  {
     icon: Handshake,
     title: "Connect with the Lab",
     description: "Reach out to the PI and take the next step.",
@@ -127,7 +167,7 @@ export default function Home() {
           {/* Drop your component here */}
         </div>
       </div>
-    </section>
+      </section>
 
       {/*MADE WITH*/}
       <section className="relative w-full flex items-center justify-center py-4">
