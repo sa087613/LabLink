@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { TextFlippingBoard } from "@/components/text-flipping-board";
 import { IntroChrome } from "@/components/intro-chrome";
 import { IntroOverlay } from "@/components/intro-overlay";
+import { CardBody, CardContainer, CardItem } from "@/components/3d-card";
 import { GradientBackground } from "@/components/paper-design-shader-background"
 import { FileUp, Sparkles, Handshake } from "lucide-react";
 import { Check } from "lucide-react";
@@ -70,7 +71,7 @@ export default function Home() {
 
       {/*HERO*/}
       <section className="relative w-full flex items-center justify-center pt-28 py-4">
-        <div className="relative w-[90%] max-w-5xl min-h-[500px] md:aspect-video md:min-h-0 overflow-hidden">
+        <div className="relative w-[90%] max-w-6xl min-h-[500px] max-h-[550px] md:aspect-video md:min-h-0 overflow-hidden">
           <div className="absolute inset-0 border-2 border-dashed border-[#B39051] overflow-hidden z-0">
             <GradientBackground />
           </div>
@@ -96,7 +97,7 @@ export default function Home() {
 
       {/*HOW IT WORKS*/}
       <section className="relative w-full flex items-center justify-center py-4">
-      <div className="relative w-[90%] max-w-5xl border-2 border-dashed border-[#B39051]">
+      <div className="relative w-[90%] max-w-6xl border-2 border-dashed border-[#B39051]">
         <div className="border-b-2 border-dashed border-[#B39051] py-6 px-6 text-center">
           <h1
             className="text-white text-lg md:text-3xl italic font-bold leading-tight"
@@ -131,7 +132,7 @@ export default function Home() {
 
       {/*FEATURES*/}
       <section className="relative w-full flex items-center justify-center py-4">
-      <div className="relative w-[90%] max-w-5xl border-2 border-dashed border-[#B39051] grid grid-cols-1 md:grid-cols-2">
+      <div className="relative w-[90%] max-w-6xl border-2 border-dashed border-[#B39051] grid grid-cols-1 md:grid-cols-2">
         {/* Left column */}
         <div className="flex flex-col justify-center gap-8 px-10 py-16 md:border-r-2 md:border-dashed md:border-[#B39051]">
           <div>
@@ -156,22 +157,62 @@ export default function Home() {
           </ul>
         </div>
 
-        {/* Right column — reserved for your component */}
         <div
           className="relative min-h-[500px] md:min-h-0"
           style={{
             backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
             backgroundSize: "24px 24px",
           }}
-        >
-          {/* Drop your component here */}
+          >
+          {/* Right column */}
+          <div
+          className="relative flex items-center justify-center min-h-[500px] md:min-h-0 py-12"
+          style={{
+          backgroundImage: "radial-gradient(circle, rgba(179,144,81,0.15) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+          }}
+          >
+          <CardContainer className="inter-var" containerClassName="relative z-10">
+            <CardBody className="bg-[#0a0a0a] relative group/card shadow-2xl w-auto sm:w-[26rem] h-auto rounded-xl p-6 border border-[#B39051]/30">
+              <CardItem
+                translateZ="50"
+                className="text-xl font-bold text-white"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Professor Chen AI Lab
+              </CardItem>
+              <CardItem
+                as="p"
+                translateZ="60"
+                className="text-sm max-w-sm mt-2 text-white/50"
+              >
+                Dr. Sarah Chen's lab is looking for undergrads with machine learning experience.
+              </CardItem>
+              <CardItem translateZ="100" className="w-full mt-4">
+                <div className="mb-12 rounded-2xl overflow-hidden bg-white/5 max-w-xl mx-auto p-4">
+                  <img src="/harvard.svg" className="w-full h-64 object-contain" />
+                </div>
+              </CardItem>
+              <div className="flex justify-between items-center mt-20">
+                <CardItem
+                  translateZ={20}
+                  as="a"
+                  href="/blogs"
+                  className="px-4 py-2 rounded-xl text-xs font-normal text-[#B39051] hover:text-white transition-colors"
+                >
+                  Read More →
+                </CardItem>
+              </div>
+            </CardBody>
+          </CardContainer>
+          </div>
         </div>
       </div>
       </section>
 
       {/*MADE WITH*/}
       <section className="relative w-full flex items-center justify-center py-4">
-        <div className="relative w-[90%] max-w-5xl overflow-hidden border-2 border-dashed border-[#B39051] bg-black py-6">
+        <div className="relative w-[90%] max-w-6xl overflow-hidden border-2 border-dashed border-[#B39051] bg-black py-6">
           <p className="text-white/60 text-center text-sm tracking-widest uppercase mb-10">
             Constructed with these frameworks
           </p>
