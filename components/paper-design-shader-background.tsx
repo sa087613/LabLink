@@ -1,7 +1,11 @@
 "use client"
 import { GrainGradient } from "@paper-design/shaders-react"
 
-export function GradientBackground() {
+interface GradientBackgroundProps {
+  scale?: number
+}
+
+export function GradientBackground({ scale = 1 }: GradientBackgroundProps) {
   return (
     <div className="absolute inset-0 -z-10">
       <GrainGradient
@@ -13,7 +17,7 @@ export function GradientBackground() {
         shape="corners"
         offsetX={0}
         offsetY={0}
-        scale={1}
+        scale={scale}
         rotation={0}
         speed={1}
         colors={["#B3A369", "#8F713D", "#051E39"]}
