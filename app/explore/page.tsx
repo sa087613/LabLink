@@ -22,6 +22,10 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            <section classname="relative w-full flex items-center justify-center pt-28 py-4">
+                
+            </section>
         </div>
     )
 }
