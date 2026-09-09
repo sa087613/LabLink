@@ -9,7 +9,7 @@ const navItems = [
   { icon: Home, label: "Home", href: "/" },
   { icon: Compass, label: "Search", href: "/explore" },
   { icon: Mail, label: "Email", href: "/email" },
-  { icon: FlaskConical, label: "Lab", href: "#lab" },
+  { icon: FlaskConical, label: "Lab", href: "/lab" },
 ];
 
 const itemVariants = {
@@ -108,21 +108,22 @@ export function IntroChrome() {
           </div>
         )}
       </motion.nav>
-
-      <motion.button
-        variants={itemVariants}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        aria-label="Profile"
-        className="fixed top-6 right-6 z-50 h-11 w-11 overflow-hidden rounded-full border shadow-lg backdrop-blur-xl backdrop-saturate-150 border-[#B39051] bg-black/20 transition-colors hover:bg-white/20"
-      >
-        <Image
-          src="/profile.jpg"
-          alt="Profile"
-          width={44}
-          height={44}
-          className="h-full w-full object-cover"
-        />
-      </motion.button>
+      <Link href="/profile" aria-label="Profile">
+        <motion.button
+          variants={itemVariants}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          aria-label="Profile"
+          className="fixed top-6 right-6 z-50 h-11 w-11 overflow-hidden rounded-full border shadow-lg backdrop-blur-xl backdrop-saturate-150 border-[#B39051] bg-black/20 transition-colors hover:bg-white/20"
+        >
+          <Image
+            src="/profile.jpg"
+            alt="Profile"
+            width={44}
+            height={44}
+            className="h-full w-full object-cover"
+          />
+        </motion.button>
+      </Link>
     </motion.div>
   );
 }

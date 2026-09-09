@@ -8,6 +8,7 @@ import { GradientBackground } from "@/components/paper-design-shader-background"
 import { FileUp, Sparkles, Handshake, Check, Plus } from "lucide-react";
 import { PaperDesignBackground } from "@/components/neon-dither"
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
+import Link from "next/link";
 
 const FOOTER_LINKS = {
   Product: [
@@ -126,12 +127,12 @@ export default function Home() {
             <p className="text-white/50 text-sm md:text-lg max-w-2xl">
               Your resume already shows what you can do. <br /> LabLink matches it against GT labs so you find the right one faster.
             </p>
-            <button
-              type="button"
+            <Link
+              href="/profile"
               className="rounded-full bg-[#B39051] text-[#051E39] text-sm px-4 py-2 md:px-2 md:py-0.5 font-mono hover:bg-white/90 transition-colors"
             >
               UPLOAD RESUME →
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -312,12 +313,12 @@ export default function Home() {
             <p className="text-white/50 text-sm md:text-lg max-w-2xl">
               Join Georgia Tech students who found their research match in minutes, not months.
             </p>
-            <button
-              type="button"
+            <Link
+              href="/profile"
               className="rounded-full bg-[#B39051] text-[#051E39] text-sm px-4 py-2 md:px-2 md:py-0.5 font-mono hover:bg-white/90 transition-colors"
             >
               GET STARTED →
-            </button>
+            </Link>
           </div>
         </div>
       </section>
