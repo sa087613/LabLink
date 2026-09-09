@@ -19,7 +19,7 @@ export default function Home() {
               className="text-white text-3xl md:text-5xl italic font-bold leading-tight"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Coming Soon
+              Coming Soon...
             </h1>
           </div>
         </div>
