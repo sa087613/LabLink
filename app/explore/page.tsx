@@ -1242,10 +1242,6 @@ export default function Home() {
                     <img src={lab.piAvatar} alt={lab.pi} className="w-8 h-8 rounded-full" />
                     <span className="text-sm font-medium text-white/80">{lab.pi}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-white/40">
-                    <Users className="w-3 h-3" />
-                    Hiring
-                  </div>
                 </div>
 
                 <div className="mt-4 flex items-center gap-2 text-[#B39051] text-sm font-semibold">
