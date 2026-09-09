@@ -4,6 +4,8 @@ import { GradientBackground } from "@/components/paper-design-shader-background"
 import React, { useState } from 'react';
 import { Search, Tag, ArrowRight, Users } from 'lucide-react';
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
+import { Plus, Check } from "lucide-react";
+
 
 const FOOTER_LINKS = {
   Product: [
@@ -1165,33 +1167,33 @@ export default function Home() {
       <div className="max-w-6xl mx-auto pt-8">
         <div className="border-2 border-dashed border-[#B39051] rounded-2xl p-6 mb-8">
           <div className="flex flex-col md:flex-row gap-4">
-  <div className="flex-1 min-w-0 relative">
-    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 w-5 h-5" />
-    <input
-      type="text"
-      placeholder="Search labs..."
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-      className="w-full pl-12 pr-4 py-3 bg-white/10 border-2 border-white/20 text-white placeholder:text-white/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#B39051] focus:border-[#B39051] transition-colors"
-    />
-  </div>
+            <div className="flex-1 min-w-0 relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 w-5 h-5" />
+              <input
+                type="text"
+                placeholder="Search labs..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 bg-white/10 border-2 border-white/20 text-white placeholder:text-white/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#B39051] focus:border-[#B39051] transition-colors"
+              />
+            </div>
 
-  <div className="flex gap-2 overflow-x-auto md:max-w-[55%]">
-    {departments.map((department) => (
-      <button
-        key={department}
-        onClick={() => setSelectedDepartment(department)}
-        className={`px-6 py-3 rounded-xl text-sm whitespace-nowrap transition-all shrink-0 ${
-          selectedDepartment === department
-            ? 'bg-[#B39051] text-[#051E39]'
-            : 'bg-white/5 text-white/70 hover:bg-white/10'
-        }`}
-      >
-        {department}
-      </button>
-    ))}
-  </div>
-</div>
+            <div className="flex gap-2 overflow-x-auto md:max-w-[55%]">
+              {departments.map((department) => (
+                <button
+                  key={department}
+                  onClick={() => setSelectedDepartment(department)}
+                  className={`px-6 py-3 rounded-xl text-sm whitespace-nowrap transition-all shrink-0 ${
+                    selectedDepartment === department
+                      ? 'bg-[#B39051] text-[#051E39]'
+                      : 'bg-white/5 text-white/70 hover:bg-white/10'
+                  }`}
+                >
+                  {department}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
