@@ -8,7 +8,7 @@ import { Home, Compass, Mail, FlaskConical, Menu, X } from "lucide-react";
 const navItems = [
   { icon: Home, label: "Home", href: "/" },
   { icon: Compass, label: "Search", href: "/explore" },
-  { icon: Mail, label: "Email", href: "/email" },
+  { icon: Mail, label: "Email", href: "/matches" },
   { icon: FlaskConical, label: "Lab", href: "/lab" },
 ];
 

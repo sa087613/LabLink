@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Search, Tag, ArrowRight, Users } from 'lucide-react';
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { Plus, Check } from "lucide-react";
-
+import { useLabList } from "@/app/context/lab-list-context";
 
 const FOOTER_LINKS = {
   Product: [
@@ -34,6 +34,7 @@ interface Lab {
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
+  const { addLab, isInList } = useLabList();
   const departments = ['All', 'Computer Science', 'Chemical Engineering', 'Biomedical Engineering', "Industrial Engineering", "Aerospace Engineering", "Mechanical Engineering", ];
   const labs: Lab[] = [
   {
@@ -1196,15 +1197,34 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
-          {filteredLabs.map((lab) => (
-            <a
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
+        {filteredLabs.map((lab) => (
+          <div
             key={lab.slug}
-            href={lab.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-2 border-dashed border-[#B39051] rounded-2xl overflow-hidden hover:border-white/60 transition-all duration-300 hover:-translate-y-1 group cursor-pointer block no-underline"
+            className="relative border-2 border-dashed border-[#B39051] rounded-2xl overflow-hidden hover:border-white/60 transition-all duration-300 hover:-translate-y-1 group"
+          >
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                addLab({
+                  slug: lab.slug,
+                  name: lab.name,
+                  department: lab.department,
+                  pi: lab.pi,
+                  link: lab.link,
+                });
+              }}
+              className={`absolute top-4 right-4 z-10 h-8 w-8 flex items-center justify-center rounded-full transition-colors ${
+                isInList(lab.slug)
+                  ? "bg-[#B39051] text-[#051E39]"
+                  : "bg-black/70 text-white hover:bg-[#B39051] hover:text-[#051E39]"
+              }`}
             >
+              {isInList(lab.slug) ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+            </button>
+
+            <a href={lab.link} target="_blank" rel="noopener noreferrer" className="block no-underline">
               <div className="relative h-48 overflow-hidden bg-white/5 flex items-center justify-center p-4">
                 <img
                   src={lab.image}
@@ -1241,10 +1261,12 @@ export default function Home() {
 
                 <div className="flex items-center justify-between pt-4 border-t border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className="shrink-0">
-                      <img src={lab.piAvatar} alt={lab.pi} className="w-[60px] h-[60px] rounded-full object-cover" />
-                    </div>
+                    <img src={lab.piAvatar} alt={lab.pi} className="w-8 h-8 rounded-full" />
                     <span className="text-sm font-medium text-white/80">{lab.pi}</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-white/40">
+                    <Users className="w-3 h-3" />
+                    Hiring
                   </div>
                 </div>
 
@@ -1254,8 +1276,9 @@ export default function Home() {
                 </div>
               </div>
             </a>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
 
         {filteredLabs.length === 0 && (
           <div className="text-center py-16">
