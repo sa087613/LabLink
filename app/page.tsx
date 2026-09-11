@@ -232,7 +232,7 @@ export default function Home() {
               </CardItem>
               <CardItem translateZ="100" className="w-full mt-4">
                 <div className="mb-12 rounded-2xl overflow-hidden bg-white/5 max-w-xl mx-auto p-4">
-                  <img src="/banners/Example" className="w-full h-64 object-contain" />
+                  <img src="/banners/Example.png" className="w-full h-64 object-contain" />
                 </div>
               </CardItem>
               <div className="flex justify-between items-center mt-20">
