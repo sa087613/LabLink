@@ -221,25 +221,25 @@ export default function Home() {
                 className="text-lg font-bold text-white"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
-                Professor Chen AI Lab
+                Internet Intelligence Lab
               </CardItem>
               <CardItem
                 as="p"
                 translateZ="60"
                 className="text-xs max-w-sm mt-2 text-white/50"
               >
-                Dr. Sarah Chen's lab is looking for undergrads with machine learning experience.
+                This lab is looking for students interested in Internet measurement, data science, and cybersecurity who want to create tools and research that improve our understanding of Internet infrastructure.
               </CardItem>
               <CardItem translateZ="100" className="w-full mt-4">
                 <div className="mb-12 rounded-2xl overflow-hidden bg-white/5 max-w-xl mx-auto p-4">
-                  <img src="/harvard.svg" className="w-full h-64 object-contain" />
+                  <img src="/banners/Example" className="w-full h-64 object-contain" />
                 </div>
               </CardItem>
               <div className="flex justify-between items-center mt-20">
                 <CardItem
                   translateZ={20}
                   as="a"
-                  href="/blogs"
+                  href="/explore"
                   className="px-4 py-2 rounded-xl text-xs font-normal text-[#B39051] hover:text-white transition-colors"
                 >
                   Read More →
