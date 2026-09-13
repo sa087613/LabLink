@@ -128,7 +128,7 @@ export default function Home() {
               Your resume already shows what you can do. <br /> LabLink matches it against GT labs so you find the right one faster.
             </p>
             <Link
-              href="/profile"
+              href="/explore"
               className="rounded-full bg-[#B39051] text-[#051E39] text-sm px-4 py-2 md:px-2 md:py-0.5 font-mono hover:bg-white/90 transition-colors"
             >
               UPLOAD RESUME →
@@ -314,7 +314,7 @@ export default function Home() {
               Join Georgia Tech students who found their research match in minutes, not months.
             </p>
             <Link
-              href="/profile"
+              href="/explore"
               className="rounded-full bg-[#B39051] text-[#051E39] text-sm px-4 py-2 md:px-2 md:py-0.5 font-mono hover:bg-white/90 transition-colors"
             >
               GET STARTED →
