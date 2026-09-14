@@ -308,7 +308,7 @@ export default function Home() {
               className="text-white text-3xl md:text-5xl italic font-bold leading-tight"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Stop Searching. Start Matching
+              Stop Searching. Start Matching.
             </h1>
             <p className="text-white/50 text-sm md:text-lg max-w-2xl">
               Join Georgia Tech students who found their research match in minutes, not months.
