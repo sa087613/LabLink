@@ -6,7 +6,9 @@ import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { FaGoogle } from "react-icons/fa6";
 import { createClient } from "@/lib/supabase/client";
 
-const supabase = createClient();
+const supabase = createClient(
+  
+);
 
 export default function SignIn() {
   const [email, setEmail] = useState("");

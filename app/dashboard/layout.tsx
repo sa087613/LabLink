@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { Home, Search, Mail, User, LogOut } from "lucide-react";
+import { Home, Search, Mail, LogOut } from "lucide-react";
 
 const supabase = createClient();
 
@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { label: "Dashboard", href: "/dashboard", icon: Home },
   { label: "Explore Labs", href: "/explore", icon: Search },
   { label: "My Matches", href: "/matches", icon: Mail },
-  { label: "Profile", href: "/profile", icon: User },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
