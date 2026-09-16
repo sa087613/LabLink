@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Home, Compass, Mail, FlaskConical, Menu, X } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
 
 const navItems = [
   { icon: Home, label: "Home", href: "/" },
@@ -20,6 +21,15 @@ const itemVariants = {
 export function IntroChrome() {
   const [open, setOpen] = useState(false);
   const [time, setTime] = useState("");
+  const [supabase] = useState(() => createClient());
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+  }, []);
+
+  const avatarUrl = user?.user_metadata?.avatar_url;
+  const name = user?.user_metadata?.full_name ?? user?.email;
 
   useEffect(() => {
     const update = () => {
@@ -115,13 +125,19 @@ export function IntroChrome() {
           aria-label="Profile"
           className="fixed top-6 right-6 z-50 h-11 w-11 overflow-hidden rounded-full border shadow-lg backdrop-blur-xl backdrop-saturate-150 border-[#B39051] bg-black/20 transition-colors hover:bg-white/20"
         >
+          {avatarUrl ? (
           <Image
-            src="/profile.jpg"
-            alt="Profile"
+            src={avatarUrl}
+            alt={name || "Profile"}
             width={44}
             height={44}
             className="h-full w-full object-cover"
           />
+        ) : (
+          <div className="h-full w-full flex items-center justify-center bg-white/10 text-white text-sm font-medium">
+            {name?.[0]?.toUpperCase() ?? "?"}
+          </div>
+        )}
         </motion.button>
       </Link>
     </motion.div>
