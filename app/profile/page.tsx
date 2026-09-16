@@ -7,7 +7,6 @@ import { FaGoogle } from "react-icons/fa6";
 import { createClient } from "@/lib/supabase/client";
 
 const supabase = createClient(
-  
 );
 
 export default function SignIn() {
