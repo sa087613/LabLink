@@ -129,7 +129,7 @@ export default function SignIn() {
 
           <p className="text-center text-white/50 text-sm mt-8">
             Don&apos;t have an account?{" "}
-            <Link href="/sign-up" className="text-[#B39051] hover:text-white transition-colors font-medium">
+            <Link href="/signup" className="text-[#B39051] hover:text-white transition-colors font-medium">
               Sign up
             </Link>
           </p>

@@ -16,6 +16,13 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
+  const handleGoogleSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/dashboard` },
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -40,7 +47,7 @@ export default function SignUp() {
     if (error) {
       setError(error.message);
     } else {
-      window.location.href = "/sign-in";
+      window.location.href = "/dashboard";
     }
   };
 
@@ -73,6 +80,7 @@ export default function SignUp() {
 
           <button
             type="button"
+            onClick={handleGoogleSignIn}
             className="w-full flex items-center justify-center gap-3 bg-white/10 border-2 border-white/20 text-white rounded-xl py-3 mb-6 hover:bg-white/15 transition-colors"
           >
             <FaGoogle className="h-4 w-4" />

@@ -108,7 +108,7 @@ export function IntroChrome() {
           </div>
         )}
       </motion.nav>
-      <Link href="/profile" aria-label="Profile">
+      <Link href="/dashboard" aria-label="Profile">
         <motion.button
           variants={itemVariants}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
