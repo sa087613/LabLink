@@ -4,6 +4,9 @@ import Link from "next/link";
 import { GradientBackground } from "@/components/paper-design-shader-background";
 import { Mail, Lock, User, Eye, EyeOff } from "lucide-react";
 import { FaGoogle } from "react-icons/fa6";
+import { createClient } from "@/lib/supabase/client";
+
+const supabase = createClient();
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -13,14 +16,32 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       setError("Passwords don't match.");
       return;
     }
-    setError("");
-    // TODO: wire up auth
+
+    if (!email.endsWith("@gmail.com")) {
+      setError("Use your Google email.");
+      return;
+    }
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { full_name: name },
+      },
+    });
+
+    if (error) {
+      setError(error.message);
+    } else {
+      window.location.href = "/sign-in";
+    }
   };
 
   return (

@@ -4,15 +4,34 @@ import Link from "next/link";
 import { GradientBackground } from "@/components/paper-design-shader-background";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { FaGoogle } from "react-icons/fa6";
+import { createClient } from "@/lib/supabase/client";
+
+const supabase = createClient();
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire up auth
+    setError("");
+
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      setError("Invalid email or password.");
+    } else {
+      window.location.href = "/explore";
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/explore` },
+    });
   };
 
   return (
@@ -44,6 +63,7 @@ export default function SignIn() {
 
           <button
             type="button"
+            onClick={handleGoogleSignIn}
             className="w-full flex items-center justify-center gap-3 bg-white/10 border-2 border-white/20 text-white rounded-xl py-3 mb-6 hover:bg-white/15 transition-colors"
           >
             <FaGoogle className="h-4 w-4" />
@@ -61,7 +81,7 @@ export default function SignIn() {
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 w-5 h-5" />
               <input
                 type="email"
-                placeholder="you@gmail.com"
+                placeholder="you@gatech.edu"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -97,6 +117,8 @@ export default function SignIn() {
               </Link>
             </div>
 
+            {error && <p className="text-red-400 text-xs">{error}</p>}
+
             <button
               type="submit"
               className="rounded-full bg-[#B39051] text-[#051E39] text-sm px-4 py-3 font-mono font-semibold hover:bg-white transition-colors mt-2"
@@ -107,7 +129,7 @@ export default function SignIn() {
 
           <p className="text-center text-white/50 text-sm mt-8">
             Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-[#B39051] hover:text-white transition-colors font-medium">
+            <Link href="/sign-up" className="text-[#B39051] hover:text-white transition-colors font-medium">
               Sign up
             </Link>
           </p>
