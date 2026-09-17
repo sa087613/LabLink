@@ -47,7 +47,7 @@ export default function SignUp() {
     if (error) {
       setError(error.message);
     } else {
-      window.location.href = "/dashboard";
+      window.location.href = "/explore";
     }
   };
 
