@@ -14,6 +14,7 @@ export default function Dashboard() {
 
   return (
     <div className="px-10 py-16">
+      <section className="pt-28">
       <h1
         className="text-white text-3xl md:text-4xl italic font-bold mb-2"
         style={{ fontFamily: "'Playfair Display', serif" }}
@@ -23,6 +24,7 @@ export default function Dashboard() {
       <p className="text-white/50 text-sm mb-10">
         Here's a quick look at where things stand.
       </p>
+      </section>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="border-2 border-dashed border-[#B39051] rounded-2xl p-6">
