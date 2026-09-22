@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "LabLink",
   description: "LabLink Website",
+  icons: {
+    icon: "/gt.svg.webp"
+  }
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
