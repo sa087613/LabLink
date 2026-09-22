@@ -1,7 +1,7 @@
-// app/dashboard/page.tsx
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { useLabList } from "@/app/context/lab-list-context";
 import { LogOut, Upload, FileText, X, Search, Mail, TrendingUp } from "lucide-react";
 
 export default function Dashboard() {
@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { list } = useLabList();
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
@@ -29,6 +30,10 @@ export default function Dashboard() {
 
   const name = user?.user_metadata?.full_name;
   const avatarUrl = user?.user_metadata?.avatar_url;
+
+  const savedLabsCount = list.length;
+  const emailsSentCount = list.filter((l) => l.sent).length;
+  const responsesCount = list.filter((l) => l.responded).length;
 
   return (
     <div className="px-6 md:px-10 py-16 max-w-6xl mx-auto">
@@ -70,9 +75,9 @@ export default function Dashboard() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {[
-          { label: "Saved labs", value: "0", icon: Search },
-          { label: "Emails sent", value: "0", icon: Mail },
-          { label: "Responses", value: "0", icon: TrendingUp },
+          { label: "Saved labs", value: savedLabsCount, icon: Search },
+          { label: "Emails sent", value: emailsSentCount, icon: Mail },
+          { label: "Responses", value: responsesCount, icon: TrendingUp },
         ].map((stat) => (
           <div
             key={stat.label}
