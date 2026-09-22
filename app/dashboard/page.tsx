@@ -2,28 +2,43 @@
 "use client";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-
-const supabase = createClient();
+import { LogOut } from "lucide-react";
 
 export default function Dashboard() {
+  const [supabase] = useState(() => createClient());
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
   }, []);
 
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    window.location.href = "/";
+  };
+
   return (
     <div className="px-10 py-16">
       <section className="pt-28">
-      <h1
-        className="text-white text-3xl md:text-4xl italic font-bold mb-2"
-        style={{ fontFamily: "'Playfair Display', serif" }}
-      >
-        Welcome{user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ""}
-      </h1>
-      <p className="text-white/50 text-sm mb-10">
-        Here's a quick look at where things stand.
-      </p>
+        <div className="flex items-center justify-between mb-2">
+          <h1
+            className="text-white text-3xl md:text-4xl italic font-bold"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Welcome{user?.user_metadata?.full_name ? `, ${user.user_metadata.full_name}` : ""}
+          </h1>
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="flex items-center gap-2 text-white/60 hover:text-white text-sm transition-colors"
+          >
+            <LogOut className="w-4 h-4" />
+            Sign out
+          </button>
+        </div>
+        <p className="text-white/50 text-sm mb-10">
+          Here's a quick look at where things stand.
+        </p>
       </section>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
