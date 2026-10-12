@@ -12,6 +12,7 @@
     "@paper-design/shaders-react": "^0.0.80",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.116.0",
+    "@vercel/analytics": "^2.0.1",
     "animejs": "^4.5.0",
     "clsx": "^2.1.1",
     "lucide-react": "^1.42.0",
